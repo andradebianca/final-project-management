@@ -1,6 +1,5 @@
-package tccapi.controller;
+package tccapi.exception;
 
-import tccapi.exception.UsuarioNaoCadastradoException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
