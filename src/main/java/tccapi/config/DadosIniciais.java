@@ -14,7 +14,8 @@ public class DadosIniciais {
     CommandLineRunner criarUsuarios(UsuarioRepository repo, PasswordEncoder encoder) {
         return args -> {
             if (repo.count() == 0) {
-                repo.save(new Usuario("Maria Aluna", "aluno", encoder.encode("123456")));
+                repo.save(new Usuario("Administrador", "admin", encoder.encode("admin")));
+
             }
         };
     }
