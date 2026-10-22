@@ -1,6 +1,6 @@
 package tccapi.config;
 
-import tccapi.model.Usuario;
+import tccapi.model.Administrador;
 import tccapi.repository.UsuarioRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
@@ -14,7 +14,7 @@ public class DadosIniciais {
     CommandLineRunner criarUsuarios(UsuarioRepository repo, PasswordEncoder encoder) {
         return args -> {
             if (repo.count() == 0) {
-                repo.save(new Usuario("Administrador", "admin", encoder.encode("admin")));
+                repo.save(new Administrador("Administrador", "admin", encoder.encode("admin")));
 
             }
         };
