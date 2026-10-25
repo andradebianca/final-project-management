@@ -1,7 +1,7 @@
-package tccapi.model;
+package tccapi.model.Enum;
 
 public enum Perfil {
     ALUNO,
-    PROFESSOR,
+    ORIENTADOR,
     ADMINISTRADOR
 }

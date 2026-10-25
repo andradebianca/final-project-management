@@ -2,6 +2,7 @@ package tccapi.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
+import tccapi.model.Enum.Perfil;
 
 @Entity
 @Table(name = "administrador")
