@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import tccapi.model.Enum.Etapa;
 import tccapi.model.Enum.Grupo;
-
 import java.util.LinkedHashSet;
 import java.util.Set;
 

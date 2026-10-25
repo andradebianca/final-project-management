@@ -12,19 +12,16 @@ public record AlunoResponse(
         String ideiaTcc
 ) {
     public static AlunoResponse de(Aluno a) {
-        String ideia = null;
-        if (a.getIdeia() != null) {
-            ideia = a.getIdeia().isSemIdeia()
-                    ? "(sem ideia para TCC)"
-                    : a.getIdeia().getTitulo();
-        }
+        String ideia = null; 
+        String status = "PENDENTE";
+
         return new AlunoResponse(
                 a.getId(),
-                a.getNome(),
+                a.getNome(), // <-- Aqui está correto (herdado de Usuario)
                 a.getMatricula(),
                 a.getCurso(),
                 a.getEmailInstitucional(),
-                a.getStatusCadastro().name(),
+                status,
                 ideia
         );
     }

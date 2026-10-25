@@ -1,37 +1,61 @@
 package tccapi.controller;
 
-import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import tccapi.dto.AlunoRequest;
+
 import tccapi.dto.AlunoResponse;
-import tccapi.dto.IdeiaRequest;
+import tccapi.model.Aluno;
 import tccapi.service.AlunoService;
 
+import java.util.List;
+
 @RestController
-@RequestMapping("/api/alunos")
+@RequestMapping("/alunos")
 public class AlunoController {
 
-    private final AlunoService service;
+    private final AlunoService alunoService;
 
-    public AlunoController(AlunoService service) {
-        this.service = service;
+    public AlunoController(AlunoService alunoService) {
+        this.alunoService = alunoService;
     }
 
-    @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public AlunoResponse cadastrar(@RequestBody @Valid AlunoRequest req) {
-        return service.cadastrar(req);
-    }
-
-    @PutMapping("/{id}/ideia")
-    public AlunoResponse registrarIdeia(@PathVariable Long id,
-                                        @RequestBody @Valid IdeiaRequest req) {
-        return service.registrarIdeia(id, req);
+    @GetMapping
+    public ResponseEntity<List<AlunoResponse>> listarTodos() {
+        // Converte cada Aluno da lista para AlunoResponse
+        List<AlunoResponse> alunosResponse = alunoService.listarTodos().stream()
+                .map(AlunoResponse::de)
+                .toList();
+        
+        return ResponseEntity.ok(alunosResponse);
     }
 
     @GetMapping("/{id}")
-    public AlunoResponse buscar(@PathVariable Long id) {
-        return service.buscar(id);
+    public ResponseEntity<AlunoResponse> buscarPorId(@PathVariable Long id) {
+        Aluno aluno = alunoService.buscarPorId(id);
+        return ResponseEntity.ok(AlunoResponse.de(aluno));
+    }
+
+    @PostMapping
+    public ResponseEntity<AlunoResponse> cadastrar(@RequestBody Aluno aluno) {
+        Aluno novoAluno = alunoService.cadastrar(aluno);
+
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(AlunoResponse.de(novoAluno));
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<AlunoResponse> atualizar(
+            @PathVariable Long id,
+            @RequestBody Aluno aluno) {
+        Aluno alunoAtualizado = alunoService.atualizar(id, aluno);
+        return ResponseEntity.ok(AlunoResponse.de(alunoAtualizado));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> excluir(@PathVariable Long id) {
+        alunoService.excluir(id);
+        return ResponseEntity.noContent().build();
     }
 }
