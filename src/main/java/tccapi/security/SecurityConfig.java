@@ -22,13 +22,22 @@ import java.util.List;
 public class SecurityConfig {
 
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
             .cors(Customizer.withDefaults())
             .csrf(csrf -> csrf.disable())
             .headers(h -> h.frameOptions(f -> f.sameOrigin()))
-            .sessionManagement(s -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-            .authorizeHttpRequests(auth -> auth.anyRequest().permitAll()) 
+            .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+            .authorizeHttpRequests(auth -> auth
+                .requestMatchers(
+                    "/v3/api-docs/**",
+                    "/swagger-ui/**",
+                    "/swagger-ui.html",
+                    "/auth/login",
+                    "/h2-console/**"
+                ).permitAll()
+                .anyRequest().authenticated()
+            )
             .build();
     }
 
