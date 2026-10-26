@@ -30,9 +30,7 @@ Status: **em desenvolvimento**
 - [Como executar](#como-executar)
 - [Documentação da API](#documentação-da-api)
 - [Arquitetura](#arquitetura)
-- [Segurança](#segurança)
 - [Deploy em produção](#deploy-em-produção)
-- [Roadmap](#roadmap)
 - [Documentação de estudo](#documentação-de-estudo)
 - [Autores](#autores)
 
