@@ -167,7 +167,6 @@ Cliente → Controller → Service → Repository → Banco de dados
               └─ DTO de resposta
 ```
 
-### Modelo de domínio
 
 <!--  Rascunho com base nos nomes das classes. Ajustar relações e cardinalidades. 
 
@@ -183,8 +182,6 @@ classDiagram
 ```
 
 ---
-
-## Segurança
 
 ## Deploy em produção
 
@@ -208,8 +205,8 @@ Material explicativo produzido pelo grupo, na pasta [`docs/`](docs/):
 
 | Nome | Responsabilidade | Contato |
 |---|---|---|
-| Bianca Andrade | [papel] Desenvolvimento Backend | [GitHub](https://github.com/andradebianca) · [LinkedIn](https://www.linkedin.com/in/andradebianca/) |
-| Guilherme Suave| [papel] Desenvolvimento Frontend [GitHub](https://github.com/GGSuave) |
+| Bianca Andrade | Desenvolvimento Backend | [GitHub](https://github.com/andradebianca) · [LinkedIn](https://www.linkedin.com/in/andradebianca/) |
+| Guilherme Suave| Desenvolvimento Frontend | [GitHub](https://github.com/GGSuave) |
 
 ## Licença
 
