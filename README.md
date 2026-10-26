@@ -85,8 +85,8 @@ Legenda: ✅ implementado · 🚧 em andamento · 📋 planejado
 | Cadastro e consulta de alunos | ✅ |
 | Cadastro e consulta de orientadores | ✅ |
 | Áreas de interesse (alunos e orientadores) | ✅  |
-| Cadastro e vínculo de TCC | 🚧 ⚠️ |
-| Controle de acesso por perfil | 🚧 ⚠️ |
+| Cadastro e vínculo de TCC | 🚧  |
+| Controle de acesso por perfil | 🚧  |
 | Recomendação de orientadores por tema | 📋 |
 | Solicitação formal de orientação | 📋 |
 | Atividades em kanban com etiquetas de status | 📋 |
@@ -179,15 +179,12 @@ classDiagram
     Aluno "1..2" "1" Tcc : participa
     Aluno "*" -> "*" AreaInteresse
     Orientador "*" -> "*" AreaInteresse --> 
-```
-
 ---
 
 ## Deploy em produção
 
 A API foi pensada para rodar em um servidor linux, conectada ao front-end e a um banco PostgreSQL. Em produção, toda configuração sensível vem de variáveis de ambiente.
 
-```
 ---
 
 ## Documentação de estudo
