@@ -6,27 +6,26 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity 
 @Table(name = "universidade")
+@Getter @Setter 
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Universidade {
 
     @Id 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Setter (AccessLevel.NONE)
     private Long id;
 
     @Column(nullable = false)
     private String nome;
 
-    public Long getId() {
-        return id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
+    public Universidade(String nome){
         this.nome = nome;
     }
 

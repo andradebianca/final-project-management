@@ -10,7 +10,7 @@ import tccapi.model.Enum.StatusUser;
 import tccapi.model.Enum.TipoPerfil;
 
 @Entity 
-@Table(name = "user")
+@Table(name = "usuario")
 @Inheritance(strategy = InheritanceType.JOINED)
 @Getter @Setter 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -20,9 +20,6 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Setter (AccessLevel.NONE)
     private Long id;
-
-    @Column(nullable = false, unique = true)
-    private String login;
 
     @Column(nullable = false)
     private String senha;
@@ -58,7 +55,6 @@ public class Usuario {
 
     public Usuario(String senha, String nome, String email, Universidade universidade, String img)
     {
-        this.login = email;
         this.senha = senha;
         this.nome = nome;
         this.email = email;
