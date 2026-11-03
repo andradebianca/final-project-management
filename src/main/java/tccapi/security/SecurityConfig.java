@@ -69,7 +69,7 @@ public class SecurityConfig {
             )
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs", "/v3/api-docs/**").permitAll() //Qualquer pessoa pode abrir o swagger.
-                .requestMatchers(HttpMethod.POST, "/auth/login", "/alunos/**", "/universidades/**", "/cursos/**").permitAll()
+                .requestMatchers(HttpMethod.POST, "/auth/login", "/alunos/**", "/universidades/**", "/cursos/**", "/orientador/**").permitAll()
                 .anyRequest().authenticated() //Todo o resto precisa ser autenticado.
             )
             .exceptionHandling(ex -> ex //personalização dos erros.

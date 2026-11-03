@@ -11,7 +11,7 @@ public class LoginResponse {
     private String token;
     private String tipo;
     private Long id;
-    private String name;
+    private String nome;
     private TipoPerfil tipoPerfil;
     private String img;
 }
