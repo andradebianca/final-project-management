@@ -19,7 +19,7 @@ import lombok.RequiredArgsConstructor;
 
 @Component
 @RequiredArgsConstructor
-public class SecurityFilter extends OncePerRequestFilter {
+public class SecurityFilter extends OncePerRequestFilter { //OncePerRequestFIlter = Executar apenas uma vez para cada execução.
 
     private final TokenService tokenService;
     private final UsuarioRepository usuarioRepository;
