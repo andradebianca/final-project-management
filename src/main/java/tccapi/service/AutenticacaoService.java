@@ -20,16 +20,23 @@ public class AutenticacaoService {
     public LoginResponse autenticar(LoginRequest dados) {
 
         Authentication authentication = authenticationManager.authenticate(
-            new UsernamePasswordAuthenticationToken(
-                dados.getEmail(),
-                dados.getSenha()
-            )
+                new UsernamePasswordAuthenticationToken(
+                        dados.getEmail(),
+                        dados.getSenha()
+                )
         );
 
         Usuario usuario = (Usuario) authentication.getPrincipal();
 
         String token = tokenService.gerarToken(usuario);
 
-        return new LoginResponse(token, "Bearer");
+        return new LoginResponse(
+                token,
+                "Bearer",
+                usuario.getId(),
+                usuario.getNome(),
+                usuario.getPerfil(),
+                usuario.getImg()
+        );
     }
 }

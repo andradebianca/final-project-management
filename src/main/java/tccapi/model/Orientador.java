@@ -2,6 +2,7 @@ package tccapi.model;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -12,7 +13,7 @@ import tccapi.model.Enum.TipoPerfil;
 
 @Entity
 @Table(name = "orientadores")
-@Getter @Setter 
+@Getter @Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Orientador extends Usuario {
 
@@ -30,9 +31,20 @@ public class Orientador extends Usuario {
 
     private String contato;
 
+    public Orientador(List<String> areasAtuacao,
+                      PreferenciaTema perfilAceito,
+                      String descricao,
+                      Boolean aceitaOrientados,
+                      String contato) {
+        this.areasAtuacao = areasAtuacao;
+        this.perfilAceito = perfilAceito;
+        this.descricao = descricao;
+        this.aceitaOrientados = aceitaOrientados;
+        this.contato = contato;
+    }
+
     @PrePersist
     private void definirPerfil() {
         setPerfil(TipoPerfil.ORIENTADOR);
     }
-
 }
