@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import jakarta.validation.Valid;
@@ -29,7 +30,7 @@ public class AlunoController {
         return ResponseEntity.status(HttpStatus.CREATED).body(aluno);
     }
 
-    // Listar todos os alunos
+    @PreAuthorize("hasAnyRole('COORDENADOR','ORIENTADOR')")
     @GetMapping
     public ResponseEntity<List<AlunoResponse>> listarTodos() {
 
